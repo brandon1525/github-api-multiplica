@@ -1,0 +1,12 @@
+<div fxFlexFill fxLayout="column" fxLayoutAlign="center center">
+  <div fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="10px" fxLayoutAlign="start center" fxLayoutAlign.xs="center center">
+    <mat-form-field>
+      <input matInput type="text" placeholder="Enter username" [(ngModel)]="username"/>
+      <button mmat-mini-fab *ngIf="username" matSuffix mat-icon-button aria-label="Clear" (click)="username=''; userNotFound=false;">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="buscarRepo()" [disabled]="!username"><mat-icon>search</mat-icon>Buscar repositorios</button>
+  </div>
+  <div *ngIf="userNotFound">Usuario no encontrado</div>
+</div>

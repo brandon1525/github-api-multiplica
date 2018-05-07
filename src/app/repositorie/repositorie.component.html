@@ -1,0 +1,47 @@
+
+<h2 class="link-header-section mat-display-2"><span [routerLink]="['../../repos']">{{owner}} </span> / Issues</h2>
+
+<div class="example-header">
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtro de issues">
+  </mat-form-field>
+</div>
+<div class="example-container mat-elevation-z8">
+
+  <table mat-table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+      <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+    </ng-container>
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Titulo </th>
+      <td mat-cell *matCellDef="let row"> {{row.title}} </td>
+    </ng-container>
+    <ng-container matColumnDef="body">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Descripción </th>
+      <td mat-cell *matCellDef="let row"> {{row.body}} </td>
+    </ng-container>
+    <ng-container matColumnDef="state">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> State </th>
+      <td mat-cell *matCellDef="let row"> {{row.state}} </td>
+    </ng-container>
+    <ng-container matColumnDef="labels">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Etiquetas </th>
+      <td mat-cell *matCellDef="let row">
+        <mat-chip-list>
+          <mat-chip *ngFor="let label of row.labels" [ngStyle]="{'background-color': '#'+label.color}">{{label.name}}</mat-chip>
+        </mat-chip-list>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="updated_at">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Última actualización </th>
+      <td mat-cell *matCellDef="let row"> {{row.updated_at | date}} </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>

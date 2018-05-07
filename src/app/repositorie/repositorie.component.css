@@ -1,0 +1,28 @@
+.link-header-section {
+  color: #0277bd;
+  margin-top: 60px;
+}
+.link-header-section>span {
+  cursor: pointer;
+}
+.example-container {
+  display: flex;
+  flex-direction: column;
+  max-height: 500px;
+  min-width: 300px;
+  overflow: auto;
+}
+
+.example-header {
+  min-height: 64px;
+  padding: 8px 24px 0;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.mat-column-select {
+  overflow: visible;
+}
